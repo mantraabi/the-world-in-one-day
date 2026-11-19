@@ -1,5 +1,9 @@
 # The World Today — 19 November 2026
 
+[![make.fun · news-image-20261119](https://make.fun/badge/news-image-20261119.svg)](https://make.fun/bounty/news-image-20261119?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261119)
+[![rank](https://make.fun/badge/news-image-20261119/mantraabi/the-world-in-one-day/rank.svg)](https://make.fun/bounty/news-image-20261119/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261119)
+[![reward](https://make.fun/badge/news-image-20261119/mantraabi/the-world-in-one-day/reward.svg)](https://make.fun/bounty/news-image-20261119?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261119)
+
 One page, one day. Every story in this image happened, or was first published, on
 **Thursday 19 November 2026**. The page holds **35 stories from six regions**: three
 lead pictures with their own artwork, eight briefs with icons, a numbered world map,
@@ -80,3 +84,7 @@ which fails if a line on the page cannot be matched to exactly one published ite
 ## Licence
 
 MIT.
+
+## The bounty
+
+This page is an entry in make.fun's ["Sum up 19 November's world news in one image"](https://make.fun/bounty/news-image-20261119) bounty.
