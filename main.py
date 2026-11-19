@@ -8,22 +8,25 @@ the page from `tools/content.py` and `tools/data/land.json`.
 The submission harness runs this file, though, and it runs with nothing but the
 Python standard library. So this file does no drawing: it checks that `entry.png`
 is a real, complete, 1024x1024 PNG that decodes chunk by chunk, then copies it to
-`output/entry.png`. Copying a fixed byte string is deliberately idempotent — two
-runs produce two identical files.
+`$MAKEFUN_OUTPUT_DIR/entry.png`. Copying a fixed byte string is deliberately
+idempotent — two runs produce two identical files.
 
 No third-party imports. No network. No randomness. No timestamps in the output.
 """
 
 from __future__ import annotations
 
+import os
 import struct
 import sys
 import zlib
 from pathlib import Path
 
-HERE = Path(__file__).resolve().parent
+# The grader mounts this repository read-only at /bot and hands over an empty
+# writable directory, so the image has to be written there, never beside the source.
+HERE = Path(os.environ.get("MAKEFUN_BOT_DIR") or Path(__file__).resolve().parent)
 SOURCE = HERE / "entry.png"
-OUTPUT_DIR = HERE / "output"
+OUTPUT_DIR = Path(os.environ.get("MAKEFUN_OUTPUT_DIR") or "/output")
 OUTPUT = OUTPUT_DIR / "entry.png"
 
 EXPECTED_WIDTH = 1024
@@ -90,10 +93,10 @@ def main() -> int:
     except zlib.error as exc:
         raise SystemExit(f"entry.png: image data will not inflate ({exc})") from exc
 
-    OUTPUT_DIR.mkdir(exist_ok=True)
+    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     OUTPUT.write_bytes(blob)
 
-    print(f"entry.png  {width}x{height}  {len(blob):,} bytes  ->  output/entry.png")
+    print(f"entry.png  {width}x{height}  {len(blob):,} bytes  ->  {OUTPUT}")
     print(f"chunks     {len(chunks)}  image data  {len(idat):,} bytes")
     return 0
 
